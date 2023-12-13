@@ -21,7 +21,7 @@ Limitations:
 ## How to use it to migrate your Flare project to DITA using Oxygen XML Editor/Author
 
 - Install Oxygen XML Editor/Author.
-- Download a zipped version of the project and unzip it.
+- Download and unzip the [project](https://codeload.github.com/oxygenxml-incubator/FlareToDITA/zip/refs/heads/main).
 - Copy your Flare project into the **flareProject** folder. The content of your Flare Project should look like this:
 ```
 [this folder]
