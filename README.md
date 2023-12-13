@@ -33,11 +33,12 @@ Limitations:
 ```
 
 - Start Oxygen, go to **Project -> Open project** and open the **flareToDita.xpr**.
-- in the **Project** view, right click the **flareToDITA.xsl** file and in the contextual menu select **Transform->Apply Transformation Scenario(s)**.
+- In the **Project** view, right click the **flareToDITA.xsl** file and in the contextual menu select **Transform->Apply Transformation Scenario(s)**.
 
 ### Result
 
 The DITA Map is generated in the location *flareProject/f/Project/TOCs/TOC.ditamap* and a *\*.dita* file will be generated next to every *\*.htm* file.
+Open the DITA Map in the **Oxygen** **DITA Maps Manager** view and use the **Validate and check for completeness** toolbar action to check if it is valid. If there are validation problems you can add issues on this project with details about what the original HTML content looks like and what the validation error is. Taking into account the limitations listed above you should also open side by side each original HTML file and generated DITA XML topic and double check if the content was properly migrated.
 
 
 
