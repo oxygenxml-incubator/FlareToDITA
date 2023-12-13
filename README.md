@@ -1,4 +1,4 @@
-# Convert Madcap Flare projects to DITA XML
+# Convert Madcap Flare projects to DITA XML (Experimental)
 
 
 ## What the project does:
