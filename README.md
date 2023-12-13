@@ -13,17 +13,16 @@
 Limitations:
 
   - There is no support yet for profiling attributes migrations.
+  - The table column widths and cell/row spans are not taken into account.
   - There is no support yet for creating DITAVAL filter files.
   - Headings are usually converted to plain DITA XML paragraphs with bold text so they need to be manually converted to DITA XML sections or inner topics.
   
   
-## How to use it to migrate your Flare project to DITA
+## How to use it to migrate your Flare project to DITA using Oxygen XML Editor/Author
 
-- install Oxygen XML Author
-
-- unzip the attached project
-
-- copy your Flare project into the flareProject sub folder. It's conent should look like this:
+- Install Oxygen XML Editor/Author.
+- Download a zipped version of the project and unzip it.
+- Copy your Flare project into the **flareProject** folder. The content of your Flare Project should look like this:
 ```
 [this folder]
   _rels
@@ -33,30 +32,23 @@ Limitations:
   EmployeeManual.flprj
 ```
 
-- start Oxygen, go to Project -> Open project and open the flareToDita.xpr
-
-- in the Project view, invoke the contextual menu over flareToDITA.xsl and select Transform->Apply Transformation Scenario(s)
+- Start Oxygen, go to **Project -> Open project** and open the **flareToDita.xpr**.
+- in the **Project** view, right click the **flareToDITA.xsl** file and in the contextual menu select **Transform->Apply Transformation Scenario(s)**.
 
 ### Result
 
-The ditamap is generated in *flareProject/f/Project/TOCs/TOC.ditamap* and a *\*.dita* file will be generated next to every *\*.htm* file.
+The DITA Map is generated in the location *flareProject/f/Project/TOCs/TOC.ditamap* and a *\*.dita* file will be generated next to every *\*.htm* file.
 
 
 
 ## Publishing to WebHelp or PDF
 
-The ditamap should be opened automatically in the DITA Maps Manager, but,  just in case it doesn't, locate it inside the Project view and double click it.
+The ditamap should be opened automatically in the **DITA Maps Manager**, but, just in case it doesn't, locate it inside the **Project** view and double click it.
 
-- in the DITA Maps Manager view, on the toolbar, click the Configure transformation scenario(s) button
+- In the **DITA Maps Manager** view, on the toolbar, click the **Configure transformation scenario(s)** button
+- In the **Configure transformation scenario(s)** dialog, select **DITA Map WebHelp Responsive** and click **Duplicate** from under the list
+- Go on the **Parameters** tab and set the **fix.external.refs.com.oxygenxml** parameter to true (it needs to be set because the **DITA Map** refers to resources outside its folder, as it mirrors the flare project).
+- Click **OK** and then **Apply Associated**.
 
-- in the dialog, select DITA Map WebHelp Responsive and click Duplicate from under the list
-
-
-- go on the Parameters tab and set the fix.external.refs.com.oxygenxml parameter to true (it needs to be set because the DITA Map refers to resources outside its folder, as it mirrors the flare project)
-
-
-- Click OK and then Apply Associated
-
-
-To Obtain a PDF perform the above procedure again, but this time use the DITA Map PDF - based on HTML5 & CSS scenario
+To Obtain a PDF perform the above procedure again, but this time use the **DITA Map PDF - based on HTML5 & CSS** scenario
 
