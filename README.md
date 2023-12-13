@@ -1,13 +1,7 @@
 # Convert Madcap Flare projects to DITA XML
 
-The XSLT can be applied over itself (by creating a transformation scenario in Oxygen for example).
-There is a parameter **FlareProjectFolder** which needs to be set to the folder where the Flare project is placed (the folder containing the **Analyzer/Content/Output/Project** subfolders).
-The XSLT will create DITA Maps and Topics in the same folders where the Flare resources are located.
-The main created DITA Map is created in the **Project/TOCs/** folder and for each HTML file a DITA XML topic is created next to it.
-When publishing the DITA Map as it refers to resources outside its folder, if you are using Oxygen XML for publishing this specific publishing parameter must be set:
-https://www.oxygenxml.com/doc/ug-editor/topics/dita-ot-external-refs.html
 
-What the XSLT does:
+## What the project does:
 
   - Creates a DITA Map from the table of contents file.
   - Creates a plain DITA XML topic for each HTML file.
@@ -22,4 +16,47 @@ Limitations:
   - There is no support yet for creating DITAVAL filter files.
   - Headings are usually converted to plain DITA XML paragraphs with bold text so they need to be manually converted to DITA XML sections or inner topics.
   
+  
+## How to use it to migrate your Flare project to DITA
+
+- install Oxygen XML Author
+
+- unzip the attached project
+
+- copy your Flare project into the flareProject sub folder. It's conent should look like this:
+```
+[this folder]
+  _rels
+  Content
+  Project
+  [Content_Types].xml
+  EmployeeManual.flprj
+```
+
+- start Oxygen, go to Project -> Open project and open the flareToDita.xpr
+
+- in the Project view, invoke the contextual menu over flareToDITA.xsl and select Transform->Apply Transformation Scenario(s)
+
+### Result
+
+The ditamap is generated in *flareProject/f/Project/TOCs/TOC.ditamap* and a *\*.dita* file will be generated next to every *\*.htm* file.
+
+
+
+## Publishing to WebHelp or PDF
+
+The ditamap should be opened automatically in the DITA Maps Manager, but,  just in case it doesn't, locate it inside the Project view and double click it.
+
+- in the DITA Maps Manager view, on the toolbar, click the Configure transformation scenario(s) button
+
+- in the dialog, select DITA Map WebHelp Responsive and click Duplicate from under the list
+
+
+- go on the Parameters tab and set the fix.external.refs.com.oxygenxml parameter to true (it needs to be set because the DITA Map refers to resources outside its folder, as it mirrors the flare project)
+
+
+- Click OK and then Apply Associated
+
+
+To Obtain a PDF perform the above procedure again, but this time use the DITA Map PDF - based on HTML5 & CSS scenario
 
