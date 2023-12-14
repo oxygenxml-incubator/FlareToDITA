@@ -86,6 +86,18 @@
         <xsl:result-document doctype-system="map.dtd" doctype-public="-//OASIS//DTD DITA Map//EN"
             href="{resolve-uri(concat($fileNameNoExt, '.ditamap'), base-uri())}" indent="true">
             <map>
+                <xsl:variable name="firstTOCEntry" select="(//TocEntry)[1]"/>
+                <xsl:if test="$firstTOCEntry">
+                    <xsl:variable name="hrefRel" select="concat('../..', $firstTOCEntry/@Link)"/>
+                    <xsl:if test="doc-available(resolve-uri($hrefRel, base-uri()))">
+                        <xsl:variable name="title" select="(document($hrefRel, .)//p[@class='title'])[1]"/>
+                        <xsl:if test="$title">
+                            <title>
+                                <xsl:apply-templates select="$title/node()" mode="htmlToDITA"/>
+                            </title>
+                        </xsl:if>
+                    </xsl:if>
+                </xsl:if>
                 <xsl:apply-templates mode="toc"/>
                 <!-- Add mapref to reusable variable files -->
                 <topicgroup id="Variables">
