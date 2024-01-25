@@ -195,6 +195,10 @@
             <xsl:apply-templates mode="htmlToDITA"/>
         </ph>
     </xsl:template>
+    
+    <xsl:template match="br" mode="htmlToDITA">
+        <xsl:processing-instruction name="linebreak"/>
+    </xsl:template>
 
     <!-- External link -->
     <xsl:template match="a[@href]" mode="htmlToDITA">
@@ -331,6 +335,12 @@
         <ph>
             <xsl:apply-templates mode="htmlToDITA"/>
         </ph>
+    </xsl:template>
+    
+    <xsl:template match="blockquote" mode="htmlToDITA">
+        <q>
+            <xsl:apply-templates mode="htmlToDITA"/>
+        </q>
     </xsl:template>
 
     <xsl:template match="*:equation" mode="htmlToDITA">
